@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/stty
+lib/stty.rb
+test/test_stty.rb
