@@ -1,7 +1,10 @@
-History.txt
+.autotest
+CHANGELOG.md
 Manifest.txt
-README.txt
+README.md
 Rakefile
-bin/stty
+ext/stty/extconf.rb
+ext/stty/stty.c
+lib/stty.bundle
 lib/stty.rb
 test/test_stty.rb
