@@ -1,28 +1,55 @@
-= stty
+# stty
 
-* FIX (url)
+* https://github.com/tenderlove/stty
 
-== DESCRIPTION:
+## DESCRIPTION:
 
-FIX (describe your package)
+This is a minimal termios wrapper.  It's just enough C code to expose termios
+functions and constants, and nothing more.  This is just a fun project I did
+because I had a hard time using other serial port gems.
 
-== FEATURES/PROBLEMS:
+This is tested against my GMC-320 Geiger counter and I need to figure out how
+to write real tests.
 
-* FIX (list of features or problems)
+## Development
 
-== SYNOPSIS:
+First compile:
 
-  FIX (code sample of usage)
+```
+$ git clone https://github.com/tenderlove/stty.git
+$ cd stty
+$ rake compile
+```
 
-== REQUIREMENTS:
+Then hack.
 
-* FIX (list of requirements)
+## FEATURES/PROBLEMS:
 
-== INSTALL:
+* No tests yet (please submit them)
 
-* FIX (sudo gem install, anything else)
+## SYNOPSIS:
 
-== LICENSE:
+This code gets the version for my GMC-320 Geiger counter.
+
+```ruby
+require 'stty'
+
+Stty.open("/dev/tty.wchusbserial1420", 115200, "8N1") do |f|
+  f.flush_input
+  loop do
+    f.write "<GETVER>>"
+    x = f.read(14)
+    if x
+      p x
+      break
+    end
+    puts "retrying"
+    f.flush_input
+  end
+end
+```
+
+## LICENSE:
 
 (The MIT License)
 

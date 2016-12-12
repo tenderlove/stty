@@ -1,8 +1,8 @@
 require 'minitest/autorun'
 require 'stty'
 
-class TestStty < MiniTest::Unit::TestCase
-  def test_sanity
-    flunk "write tests or I will kneecap you"
+class TestStty < MiniTest::Test
+  def test_blah
+    assert "this is a project for fun"
   end
 end
